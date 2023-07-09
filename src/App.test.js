@@ -55,7 +55,7 @@ describe("tic-tac-toe-board functionality testing", () => {
 
     expect(screen.getByTestId(firstSquareIndex)).toHaveTextContent("X");
 
-  })
+  });
 
   it("should render O on even number of clicks", () => {
 
@@ -65,12 +65,55 @@ describe("tic-tac-toe-board functionality testing", () => {
     const evenIndex = oddIndex + 1;
     const oddClickIndex = "square-" + oddIndex;
     const evenClickIndex = "square-" + evenIndex;
-    
+
     fireEvent.click(screen.getByTestId(oddClickIndex));
     fireEvent.click(screen.getByTestId(evenClickIndex));
 
     expect(screen.getByTestId(evenClickIndex)).toHaveTextContent("O");
 
+  });
+
+
+  it("should show status winner is X if X wins", () => {
+
+    render(<Board />);
+
+    const winningPoistionsForX = [0, 4, 8];
+    const positionsForO = [1, 6];
+    const maxTurnForXToWin = 5;
+    let winningIndex = 0;
+    let losingIndex = 0;
+
+    for (let turn = 1; turn <= maxTurnForXToWin; ++turn) {
+
+      let square = "";
+      if (turn % 2 === 0) {
+        square = "square-" + positionsForO[losingIndex++];
+      } else {
+        square = "square-" + winningPoistionsForX[winningIndex++];
+      }
+
+      fireEvent.click(screen.getByTestId(square));
+    }
+
+
+
+    const status = screen.getByText("winner is: X");
+
+    expect(status).toBeInTheDocument();
+
+  });
+
+
+  it("should show status winner is O if O wins", () => {
+
+    render(<Board />);
+
+    // const status = screen.getByText("winner is: O");
+
+    // expect(status).toBeInTheDocument();
+
   })
+
 
 });
