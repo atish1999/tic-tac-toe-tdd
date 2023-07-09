@@ -78,19 +78,19 @@ describe("tic-tac-toe-board functionality testing", () => {
 
     render(<Board />);
 
-    const winningPoistionsForX = [0, 4, 8];
-    const positionsForO = [1, 6];
-    const maxTurnForXToWin = 5;
+    const winningPoistionsForO = [0, 4, 8];
+    const positionsForX = [1, 6];
+    const maxTurnForOToWin = 5;
     let winningIndex = 0;
     let losingIndex = 0;
 
-    for (let turn = 1; turn <= maxTurnForXToWin; ++turn) {
+    for (let turn = 1; turn <= maxTurnForOToWin; ++turn) {
 
       let square = "";
       if (turn % 2 === 0) {
-        square = "square-" + positionsForO[losingIndex++];
+        square = "square-" + positionsForX[losingIndex++];
       } else {
-        square = "square-" + winningPoistionsForX[winningIndex++];
+        square = "square-" + winningPoistionsForO[winningIndex++];
       }
 
       fireEvent.click(screen.getByTestId(square));
@@ -109,9 +109,28 @@ describe("tic-tac-toe-board functionality testing", () => {
 
     render(<Board />);
 
-    // const status = screen.getByText("winner is: O");
+    const winningPoistionsForO = [2, 5, 8];
+    const positionsForX = [1, 6, 7];
+    const maxTurnForOToWin = 6;
+    let winningIndex = 0;
+    let losingIndex = 0;
 
-    // expect(status).toBeInTheDocument();
+    for (let turn = 1; turn <= maxTurnForOToWin; ++turn) {
+
+      let square = "";
+      if (turn % 2 === 0) {
+        square = "square-" + winningPoistionsForO[winningIndex++];
+      } else {
+        square = "square-" + positionsForX[losingIndex++];
+      }
+
+      fireEvent.click(screen.getByTestId(square));
+    }
+
+
+    const status = screen.getByText("winner is: O");
+
+    expect(status).toBeInTheDocument();
 
   })
 
