@@ -1,6 +1,5 @@
 
 import { useState } from "react";
-import Square from "./Square";
 
 
 function Board() {
@@ -58,83 +57,134 @@ function Board() {
     if (winner) {
         status = "winner is: " + winner;
     } else {
-        status = "Nesxt Turn: " + (isXNext ? "X" : "O");
+        status = "Next Turn: " + (isXNext ? "X" : "O");
     }
 
     return (
         <>
-            <div class="status">
+            <div className="status">
                 {status}
             </div>
 
-            <div class="board-row">
-                <Square
-                    value={squareValues[0]}
-                    handleClick={() => {
-                        squareValueSetter(0);
-                    }}
-                />
+            <div data-testid="board-row" className="board-row">
 
-                <Square
-                    value={squareValues[1]}
-                    handleClick={() => {
-                        squareValueSetter(1);
-                    }}
-                />
+                <button
+                    className="square"
+                    data-testid="square-0"
+                    onClick={
+                        () => {
+                            squareValueSetter(0);
+                        }
+                    }
+                >
+                    {squareValues[0]}
+                </button>
 
-                <Square
-                    value={squareValues[2]}
-                    handleClick={() => {
-                        squareValueSetter(2);
-                    }}
-                />
+
+                <button
+                    className="square"
+                    data-testid="square-1"
+                    onClick={
+                        () => {
+                            squareValueSetter(1);
+                        }
+                    }
+                >
+                    {squareValues[1]}
+                </button>
+
+                <button
+                    className="square"
+                    data-testid="square-2"
+                    onClick={
+                        () => {
+                            squareValueSetter(2);
+                        }
+                    }
+                >
+                    {squareValues[2]}
+                </button>
 
             </div>
 
-            <div class="board-row">
-                <Square
-                    value={squareValues[3]}
-                    handleClick={() => {
-                        squareValueSetter(3);
-                    }}
-                />
+            <div data-testid="board-row" className="board-row" >
+                <button
+                    className="square"
+                    data-testid="square-3"
+                    onClick={
+                        () => {
+                            squareValueSetter(3);
+                        }
+                    }
+                >
+                    {squareValues[3]}
+                </button>
 
-                <Square
-                    value={squareValues[4]}
-                    handleClick={() => {
-                        squareValueSetter(4);
-                    }}
-                />
 
-                <Square
-                    value={squareValues[5]}
-                    handleClick={() => {
-                        squareValueSetter(5);
-                    }}
-                />
+                <button
+                    className="square"
+                    data-testid="square-4"
+                    onClick={
+                        () => {
+                            squareValueSetter(4);
+                        }
+                    }
+                >
+                    {squareValues[4]}
+                </button>
+
+                <button
+                    className="square"
+                    data-testid="square-5"
+                    onClick={
+                        () => {
+                            squareValueSetter(5);
+                        }
+                    }
+                >
+                    {squareValues[5]}
+                </button>
             </div>
 
-            <div class="board-row">
-                <Square
-                    value={squareValues[6]}
-                    handleClick={() => {
-                        squareValueSetter(6);
-                    }}
-                />
+            <div data-testid="board-row" className="board-row">
+               
+                <button
+                    className="square"
+                    data-testid="square-6"
+                    onClick={
+                        () => {
+                            squareValueSetter(6);
+                        }
+                    }
+                >
+                    {squareValues[6]}
+                </button>
 
-                <Square
-                    value={squareValues[7]}
-                    handleClick={() => {
-                        squareValueSetter(7);
-                    }}
-                />
 
-                <Square
-                    value={squareValues[8]}
-                    handleClick={() => {
-                        squareValueSetter(8);
-                    }}
-                />
+                <button
+                    className="square"
+                    data-testid="square-7"
+                    onClick={
+                        () => {
+                            squareValueSetter(7);
+                        }
+                    }
+                >
+                    {squareValues[7]}
+                </button>
+
+                <button
+                    className="square"
+                    data-testid="square-8"
+                    onClick={
+                        () => {
+                            squareValueSetter(8);
+                        }
+                    }
+                >
+                    {squareValues[8]}
+                </button>
+            
             </div>
 
         </>
